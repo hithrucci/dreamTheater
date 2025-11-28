@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="./css/style.css" />
+  </head>
+  <body>
+    <div class="menu">
+      <button
+        data-title="현재상영작"
+        onclick="movie('now_playing')"
+        type="button"
+      >
+        현재상영작
+      </button>
+      <button onclick="movie('popular')" type="button">무비차트</button>
+      <button onclick="movie('top_rated')" type="button">추천영화</button>
+      <button onclick="movie('upcoming')" type="button">상영예정</button>
+    </div>
+    <div class="search">
+      <input type="text" id="searchInput" placeholder="영화제목을 입력하세요" />
+      <button id="searchBtn">검색</button>
+    </div>
+    <h2></h2>
+    <section id="movieBoard"></section>
+    <button id="more">더보기</button>
+    <script src="custom3.js"></script>
+  </body>
+</html>
+<!--
+url기본주소 
+기본주소에 추가를 하는 것을 파라미터라고 함
+(파리미터=값), 처음에 파라미터를 추가할 때는 앞에 ?를 입력함, 그 뒤 부터는 &로 연결
+
+기본주소?파라미터=값&파라미터=값&파라미터=값
+
+-->
