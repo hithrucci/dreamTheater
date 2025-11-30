@@ -4,28 +4,83 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css"
+      integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
     <link rel="stylesheet" href="./css/style.css" />
+    <script src="./script/jquery-3.7.1.min.js"></script>
+    <script src="./script/jquery-ui.min.js"></script>
+    <script src="./script/jquery.transform2d.js"></script>
   </head>
   <body>
-    <div class="menu">
-      <button
-        data-title="현재상영작"
-        onclick="movie('now_playing')"
-        type="button"
-      >
-        현재상영작
-      </button>
-      <button onclick="movie('popular')" type="button">무비차트</button>
-      <button onclick="movie('top_rated')" type="button">추천영화</button>
-      <button onclick="movie('upcoming')" type="button">상영예정</button>
-    </div>
-    <div class="search">
-      <input type="text" id="searchInput" placeholder="영화제목을 입력하세요" />
-      <button id="searchBtn">검색</button>
-    </div>
-    <h2></h2>
-    <section id="movieBoard"></section>
-    <button id="more">더보기</button>
+    <header>
+      <div class="inner">
+        <h1>
+          <a href="index.html"><img src="./images/logo2.png" /></a>
+        </h1>
+        <nav>
+          <ul class="gnb">
+            <li><a href="#">홈</a></li>
+            <li><a href="#">현재상영작</a></li>
+            <li><a href="#">상영예정작</a></li>
+            <li><a href="#">추천영화</a></li>
+          </ul>
+        </nav>
+        <div id="search">
+          <i class="fa-solid fa-magnifying-glass"></i>
+          <input
+            type="text"
+            id="searchInput"
+            placeholder="영화제목을 입력하세요"
+          />
+        </div>
+      </div>
+      <div class="line"></div>
+    </header>
+    <main>
+      <section id="visual">
+        <h2>박스오피스</h2>
+        <div id="slide">
+          <ul class="slide-list"></ul>
+        </div>
+
+        <div class="visual-controls">
+          <div class="visual-progress">
+            <div class="visual-progress-bg"></div>
+            <div class="visual-progress-bar"></div>
+          </div>
+          <div class="visual-arrows">
+            <button type="button" class="visual-arrow prev">
+              <i class="fa-solid fa-chevron-left"></i>
+            </button>
+            <button type="button" class="visual-arrow next">
+              <i class="fa-solid fa-chevron-right"></i>
+            </button>
+          </div>
+        </div>
+      </section>
+
+      <div class="menu">
+        <button
+          data-title="현재상영작"
+          onclick="movie('now_playing')"
+          type="button"
+        >
+          현재상영작
+        </button>
+        <button onclick="movie('popular')" type="button">무비차트</button>
+        <button onclick="movie('top_rated')" type="button">추천영화</button>
+        <button onclick="movie('upcoming')" type="button">상영예정</button>
+      </div>
+
+      <h2></h2>
+      <section id="movieBoard"></section>
+      <button id="more">더보기</button>
+    </main>
     <script src="./script/custom.js"></script>
   </body>
 </html>

@@ -5,28 +5,389 @@
 ul {
   list-style: none;
 }
+a {
+  color: inherit;
+  text-decoration: inherit;
+}
+
+/* ----------------------------------- */
+/* header */
+/* ----------------------------------- */
+header {
+  width: 100%;
+  height: 90px;
+  line-height: 90px;
+  position: fixed;
+  top: 0px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-weight: bold;
+  color: #fff;
+  z-index: 999;
+}
+header:hover {
+  background-color: rgba(255, 255, 255, 0.3);
+  color: #222;
+  backdrop-filter: blur(4px);
+}
+header .inner {
+  height: 100%;
+  width: 1600px;
+  margin: 0px auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+header h1 {
+  width: 200px;
+  height: 100%;
+}
+header h1 a {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+header h1 a img {
+  width: 100%;
+  height: 100%;
+}
+nav {
+  height: 80px;
+  line-height: 80px;
+}
+.gnb {
+  display: flex;
+  align-items: center;
+  text-align: center;
+  gap: 30px;
+}
+.gnb li {
+  display: flex;
+  width: fit-content;
+}
+
+.gnb li a {
+  display: block;
+
+  padding: 0 10px; /* 기본 여백 */
+}
+.gnb li a:hover {
+  background-color: rgba(255, 255, 255, 0.5);
+}
+#search {
+  width: 200px;
+  text-align: right;
+  position: relative;
+}
+#search i {
+  cursor: pointer;
+  position: absolute;
+  right: 6px;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 1;
+}
+#search input {
+  background-color: rgba(0, 0, 0, 0.2);
+  border: none;
+  padding: 6px 10px;
+  box-sizing: border-box;
+  height: 30px;
+  line-height: 30px;
+  width: 0%;
+  opacity: 0;
+  border-radius: 20px;
+  color: #fff;
+  position: relative;
+  z-index: 0;
+  transition: width 0.3s ease, opacity 0.3s ease;
+}
+#search input.is-on {
+  width: 100%;
+  opacity: 1;
+}
+#search input::placeholder {
+  color: #aaa;
+}
+.line {
+  height: 2px;
+  width: 100%;
+  background: linear-gradient(
+    to right,
+    rgba(255, 255, 255, 0),
+    rgba(255, 255, 255, 1),
+    rgba(255, 255, 255, 0)
+  );
+}
+
+/* ----------------------------------- */
+/* main */
+/* ----------------------------------- */
+main {
+  background-color: #7b7a7b;
+}
+/* visual */
+#visual {
+  position: relative; /* 컨트롤 올리기용 */
+  height: 100vh;
+  background-image: url(../images/visual_bg.png);
+  background-size: 101%;
+  background-position: center;
+  background-repeat: no-repeat;
+  padding-top: 90px; /* fixed header 공간만큼 */
+  box-sizing: border-box;
+}
+#visual h2 {
+  margin: 0px auto;
+  text-align: center;
+  color: #ddd;
+  position: absolute;
+  top: 15%;
+  left: 50%;
+  transform: translateX(-50%);
+}
+/* slide */
+#slide {
+  width: 90%;
+  margin: 0 auto;
+  height: calc(100% - 120px);
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start; /* ✅ 왼쪽 정렬 */
+}
+
+#slide .slide-list {
+  display: flex;
+  margin-left: 0; /* ✅ 기준 0 */
+  padding: 0; /* 혹시라도 패딩 있으면 제거 */
+}
+
+#slide .slide-item {
+  border-radius: 20px;
+  aspect-ratio: 2 / 3;
+  width: 360px;
+  position: relative;
+  padding: 0px 10px;
+  box-sizing: border-box;
+  cursor: pointer;
+  transition: transform 0.3s ease;
+  transform-origin: center center;
+  margin-right: 30px;
+  z-index: 1;
+}
+
+#slide .slide-item::after {
+  text-align: center;
+  color: #fff;
+  font-size: 1.2rem;
+  content: attr(data-rank);
+  position: absolute;
+  top: -10px;
+  left: 20px;
+  width: 35px;
+  height: 45px;
+  line-height: 45px;
+  /* background-color: orange; */
+  background-image: linear-gradient(40deg, #fd3434, #ff7700ef);
+  box-shadow: 1px 2px 5px rgba(0, 0, 0, 0.6);
+}
+#slide .slide-item:last-child {
+  margin-right: 0;
+}
+
+#slide .slide-item.down {
+  transform: translateY(12%);
+}
+
+#slide .slide-item:not(.down):hover {
+  transform: rotateY(8deg);
+}
+#slide .slide-item.down:hover {
+  transform: translateY(12%) rotateY(8deg);
+}
+
+#slide .slide-item > img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 20px;
+}
+
+/* 카드 하단 버튼 영역 (bottomWrap) */
+.bottomWrap {
+  width: 100%;
+  height: 40px;
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  padding: 0px 30px;
+  bottom: 20px;
+  display: flex;
+  box-sizing: border-box;
+  justify-content: center;
+  gap: 40px;
+}
+.bottomWrap .detail {
+  width: 40%;
+  height: 100%;
+  line-height: 40px;
+  border: 1px solid #fff;
+  padding: 6px 10px;
+  box-sizing: border-box;
+  border-radius: 40px;
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  background-color: rgba(0, 0, 0, 0.3);
+  backdrop-filter: blur(4px);
+  cursor: pointer;
+}
+.bottomWrap .score {
+  width: 40%;
+  height: 100%;
+  line-height: 40px;
+  padding: 6px 10px;
+  box-sizing: border-box;
+  border-radius: 40px;
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  background-color: #6804ff;
+}
+.bottomWrap > div img {
+  display: block;
+  width: 20px;
+  height: auto;
+}
+
+/* 클릭 오버레이 */
+.slide-item .slide-overlay {
+  position: absolute;
+  inset: 0;
+  padding: 20px;
+  box-sizing: border-box;
+  background-color: rgba(0, 0, 0, 0.6);
+  color: #fff;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  text-align: left;
+}
+.slide-item.on .slide-overlay {
+  display: flex;
+}
+.slide-overlay .slide-title {
+  font-size: 1.2rem;
+  font-weight: bold;
+  margin-bottom: 8px;
+}
+.slide-overlay .slide-overview {
+  font-size: 0.9rem;
+  line-height: 1.4;
+  max-height: 80%;
+  overflow-y: auto;
+}
+.slide-overlay .slide-overview::-webkit-scrollbar {
+  display: none;
+}
+
+/* visual 컨트롤 (진행바 + chevron) */
+.visual-controls {
+  position: absolute;
+  bottom: 60px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 70%;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  z-index: 5;
+}
+.visual-progress {
+  flex: 1;
+  position: relative;
+  height: 3px;
+}
+.visual-progress-bg {
+  position: absolute;
+  inset: 0;
+  background-color: rgba(255, 255, 255, 0.2);
+}
+.visual-progress-bar {
+  position: absolute;
+  inset: 0;
+  width: 0%;
+  background-color: #ffffff;
+  transition: width 0.3s ease; /* 한 단계씩 툭툭 */
+}
+
+/* 진행바 오른쪽의 화살표 묶음 */
+.visual-arrows {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.visual-arrow {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  border: 1px solid rgba(255, 255, 255, 0.8);
+  background-color: rgba(0, 0, 0, 0.3);
+  backdrop-filter: blur(4px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  color: #fff;
+}
+.visual-arrow i {
+  pointer-events: none;
+}
+
+/* ----------------------------------- */
+/* movie list 영역 */
+/* ----------------------------------- */
 .menu {
-  margin: 50px auto;
+  margin: 30px auto 0;
   text-align: center;
 }
+.menu button {
+  padding: 8px 16px;
+  margin: 0 6px;
+  border-radius: 20px;
+  border: 1px solid #fff;
+  background-color: rgba(0, 0, 0, 0.4);
+  color: #fff;
+  cursor: pointer;
+}
+.menu button:hover {
+  background-color: #6804ff;
+}
+
 #movieBoard {
   width: 90%;
   margin: 50px auto;
   display: flex;
   gap: 20px;
   flex-wrap: wrap;
-  /* align-items: center; */
   text-align: center;
-  border: 1px solid blue;
   box-sizing: border-box;
+  /* border: 1px solid blue;  디버깅용이면 필요시에만 */
 }
 #movieBoard .card {
   margin: 50px 0px;
   width: calc(100% / 4 - 15px);
-  border: 1px solid red;
   box-sizing: border-box;
+  position: relative;
+  /* border: 1px solid red; 디버깅용 */
 }
-img {
+.card img {
   width: 100%;
   height: 500px;
   object-fit: cover;
@@ -39,12 +400,11 @@ h3 {
 .search {
   text-align: center;
 }
-.card {
-  position: relative;
-}
 .card.on {
   display: block;
 }
+
+/* 카드 hover 시 디테일 오버레이 */
 .movieDetail {
   position: absolute;
   top: 0px;
@@ -85,10 +445,20 @@ h3 {
 .movieDetail .vote {
   height: 30px;
 }
+
+/* 더보기 버튼 */
 #more {
-  margin: 50px auto;
+  margin: 0 auto 50px;
   text-align: center;
   display: block;
   width: 100px;
   cursor: pointer;
+  padding: 8px 0;
+  border-radius: 20px;
+  border: 1px solid #fff;
+  background-color: rgba(0, 0, 0, 0.4);
+  color: #fff;
+}
+#more:hover {
+  background-color: #6804ff;
 }
