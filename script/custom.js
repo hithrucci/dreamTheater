@@ -2,22 +2,35 @@
 // header search icon (검색창 열기)
 // ---------------------------------------------
 let mag = document.querySelector("header #search i");
-
+let $navLi = $(".gnb li").not(":first-child");
+let $home = $(".gnb li:first-child");
 $(function () {
+  $home.on("click", function (e) {
+    e.preventDefault();
+    $("html, body").animate({ scrollTop: 0 }, 600);
+  });
+
+  $navLi.on("click", function (e) {
+    e.preventDefault();
+    let h = $(window).height();
+    $("html, body").animate({ scrollTop: h }, 600);
+  });
   $(mag).on("click", function () {
     $("#search input").toggleClass("is-on");
   });
 
   $("header").on("mouseenter", function () {
-    $(".gnb li a")
-      .stop(true)
-      .animate({ paddingLeft: 40, paddingRight: 40 }, 300);
+    $(".gnb li").stop(true).animate({ paddingLeft: 40, paddingRight: 40 }, 300);
   });
 
   $("header").on("mouseleave", function () {
-    $(".gnb li a")
-      .stop(true)
-      .animate({ paddingLeft: 10, paddingRight: 10 }, 300);
+    $(".gnb li").stop(true).animate({ paddingLeft: 10, paddingRight: 10 }, 300);
+  });
+  $(".gnb li").on("mouseenter", function () {
+    $(this).find("span").stop().animate({ width: "100px" });
+  });
+  $(".gnb li").on("mouseleave", function () {
+    $(this).find("span").stop().animate({ width: "" });
   });
 });
 
