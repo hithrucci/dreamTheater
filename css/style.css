@@ -129,17 +129,17 @@ nav {
 /* main */
 /* ----------------------------------- */
 main {
-  background-color: #7b7a7b;
+  background-color: #fff;
 }
 /* visual */
 #visual {
-  position: relative; /* 컨트롤 올리기용 */
+  position: relative;
   height: 100vh;
   background-image: url(../images/visual_bg.png);
-  background-size: 101%;
+  background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
-  padding-top: 90px; /* fixed header 공간만큼 */
+  padding-top: 90px;
   box-sizing: border-box;
 }
 #visual h2 {
@@ -375,6 +375,193 @@ main {
   pointer-events: none;
 }
 
+/*now_playing*/
+#now_playing {
+  width: 100%;
+  position: relative;
+  padding: 20px 0px;
+}
+#now_playing h2 {
+  margin: 20px 0px;
+}
+#now_playing .inner {
+  width: 90%;
+  margin: 50px auto;
+  overflow: hidden;
+}
+#now_playing .inner .chev {
+  width: 98%;
+  position: absolute;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  left: 50%;
+  height: 30px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  cursor: pointer;
+}
+#now_playing .inner .chev img {
+  width: 50px;
+}
+#now_playing .inner .chev img:hover {
+  filter: brightness(2);
+}
+.nowList {
+  display: flex;
+  gap: 10px;
+  justify-content: flex-start;
+}
+.nowList h3 {
+  font-size: 1rem;
+  text-align: center;
+  color: #333;
+  height: 10%;
+}
+.now-item {
+  width: 300px;
+  height: 450px;
+  flex-shrink: 0;
+}
+.now-item img {
+  box-shadow: 1px 3px 8px rgba(0, 0, 0, 0.5);
+  width: 100%;
+  height: 90%;
+}
+
+/* top_rated */
+#top_rated {
+  width: 100%;
+  height: 800px;
+  position: relative;
+  padding: 20px 0px;
+  background-image: linear-gradient(45deg, #ed4700, #ff9500);
+}
+#top_rated h2 {
+  margin: 20px 0px;
+  color: #fff;
+}
+#top_rated .inner {
+  width: 65%;
+  margin: 0px auto;
+}
+#top_rated .inner .chev {
+  width: 98%;
+  position: absolute;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  left: 50%;
+  height: 30px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  cursor: pointer;
+}
+#top_rated .inner .chev img {
+  width: 50px;
+}
+#top_rated .inner .chev img:hover {
+  filter: brightness(2);
+}
+.topList {
+  width: 100%;
+  height: 100%;
+}
+.topList img {
+  width: 400px;
+}
+.topList div {
+  flex-shrink: 0;
+}
+.topList > div:first-child {
+  display: flex;
+  gap: 80px;
+}
+.topList > div:first-child img {
+  box-shadow: 1px 3px 8px rgba(0, 0, 0, 0.2);
+}
+.topList div:first-child p {
+  margin-top: 20px;
+  width: 600px;
+  color: #eee;
+}
+.topList > div:first-child .info {
+  margin-top: 30px;
+  position: relative;
+  z-index: 1;
+}
+.topList {
+  position: relative;
+  z-index: 2;
+}
+.topList::after {
+  content: "";
+  position: absolute;
+  width: 110%;
+  height: 100%;
+  left: 0px;
+  top: 0px;
+  background-color: rgba(0, 0, 0, 0.2);
+  z-index: -1;
+}
+.topList > div:first-child h3 {
+  color: #fff;
+  position: relative;
+}
+.topList > div:first-child h3::after {
+  position: absolute;
+  content: "";
+  background-color: #fff;
+  width: 200px;
+  height: 1px;
+  bottom: -10px;
+  left: 0px;
+}
+.topList > div:not(:first-child) {
+  width: 80px;
+  height: 100px;
+  position: absolute;
+}
+.topList > div:not(:first-child) img {
+  width: 80px;
+}
+.topList > div:not(:first-child) p {
+  display: none;
+}
+
+/*up_coming*/
+#up_coming {
+  width: 100%;
+  position: relative;
+  padding: 20px 0px;
+}
+#up_coming h2 {
+  margin: 20px 0px;
+}
+#up_coming .inner {
+  width: 90%;
+  margin: 50px auto;
+  overflow: hidden;
+}
+#up_coming .inner .chev {
+  width: 98%;
+  position: absolute;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  left: 50%;
+  height: 30px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  cursor: pointer;
+}
+#up_coming .inner .chev img {
+  width: 50px;
+}
+#up_coming .inner .chev img:hover {
+  filter: brightness(2);
+}
+
 /* ----------------------------------- */
 /* movie list 영역 */
 /* ----------------------------------- */
@@ -467,21 +654,4 @@ h3 {
 }
 .movieDetail .vote {
   height: 30px;
-}
-
-/* 더보기 버튼 */
-#more {
-  margin: 0 auto 50px;
-  text-align: center;
-  display: block;
-  width: 100px;
-  cursor: pointer;
-  padding: 8px 0;
-  border-radius: 20px;
-  border: 1px solid #fff;
-  background-color: rgba(0, 0, 0, 0.4);
-  color: #fff;
-}
-#more:hover {
-  background-color: #6804ff;
 }

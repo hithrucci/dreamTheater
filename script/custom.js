@@ -203,22 +203,6 @@ let page = 1;
 
 let movie = async (lists, page = 1) => {
   let url = `https://api.themoviedb.org/3/movie/${lists}?api_key=${apikey}&language=ko-KR&page=${page}`;
-
-  let morePage = document.querySelector("#more");
-
-  morePage.addEventListener("click", async () => {
-    page++;
-    let url = `https://api.themoviedb.org/3/movie/${lists}?api_key=${apikey}&language=ko-KR&page=${page}`;
-    let response = await fetch(url);
-    let data = await response.json();
-    let movieList = data.results;
-    render(movieList);
-  });
-
-  let response = await fetch(url);
-  let data = await response.json();
-  let movieList = data.results;
-  render(movieList);
 };
 
 // ---------------------------------------------
@@ -302,3 +286,139 @@ if (searchInput) {
     }
   });
 }
+
+// ---------------------------------------------
+// now_plaing
+// ---------------------------------------------
+const nowList = document.querySelector("#now_playing .nowList");
+
+async function loadNowPlayingSection() {
+  const url = `https://api.themoviedb.org/3/movie/now_playing?api_key=${apikey}&language=ko-KR&page=1`;
+  const res = await fetch(url);
+  const data = await res.json();
+  const movieList = data.results;
+
+  renderNowPlayingSection(movieList);
+}
+
+function renderNowPlayingSection(movieList) {
+  nowList.innerHTML = movieList
+    .map(
+      (movie) => `
+      <li class="now-item">
+        <img
+          src="https://image.tmdb.org/t/p/w300${movie.poster_path}"
+          alt="${movie.title}"
+        />
+        <div class="info">
+          <h3>${movie.title}</h3>
+        </div>
+      </li>
+    `
+    )
+    .join("");
+}
+
+//---------------------------------------------
+// now_playing 캐러셀
+//---------------------------------------------
+let i = 0;
+const $chevLeft = $(".chev img:first-child");
+const $chevRight = $(".chev img:nth-child(2)");
+const $nowList = $(".nowList");
+
+/*chevRight*/
+$(function () {
+  $chevRight.on("click", function () {
+    const $first = $nowList.children().first();
+    const w = $first.outerWidth(true);
+    $nowList.animate({ marginLeft: `-${w}px` }, 400, function () {
+      $first.appendTo($nowList);
+      $nowList.css({ marginLeft: 0 });
+    });
+  });
+
+  /*chevLeft*/
+  $chevLeft.on("click", function () {
+    const $last = $nowList.children().last();
+    const w = $last.outerWidth(true);
+    $last.prependTo($nowList);
+    $nowList.css({ marginLeft: `-${w}px` });
+    $nowList.animate({ marginLeft: 0 }, 400);
+  });
+});
+
+// 페이지 로드 시
+loadNowPlayingSection();
+
+// ---------------------------------------------
+// 추천영화
+// ---------------------------------------------
+
+const topList = document.querySelector("#top_rated .topList");
+
+async function loadtopRatedSection() {
+  const url = `https://api.themoviedb.org/3/movie/top_rated?api_key=${apikey}&language=ko-KR&page=1`;
+  const res = await fetch(url);
+  const data = await res.json();
+  const movieList = data.results;
+  rendertopRatedSection(movieList);
+}
+
+function rendertopRatedSection(movieList) {
+  topList.innerHTML = movieList
+    .map(
+      (movie) => `
+      <div class="top-item">
+        <img
+          src="https://image.tmdb.org/t/p/w300${movie.poster_path}"
+          alt="${movie.title}"
+        />
+        <div class="info">
+          <h3>${movie.title}</h3>
+          <p>${movie.overview}</p>
+        </div>
+      </div>
+    `
+    )
+    .join("");
+}
+$(function () {
+  loadtopRatedSection();
+});
+
+// ---------------------------------------------
+// 상영예정작
+// ---------------------------------------------
+const upList = document.querySelector("#up_coming .upList");
+
+async function loadupComingSection() {
+  const url = `https://api.themoviedb.org/3/movie/up_coming?api_key=${apikey}&language=ko-KR&page=1`;
+  const res = await fetch(url);
+  const data = await res.json();
+  const movieList = data.results;
+
+  renderupComingSection(movieList);
+}
+
+function renderupComingSection(movieList) {
+  upList.innerHTML = movieList
+    .map(
+      (movie) => `
+      <li class="up-item">
+        <img
+          src="https://image.tmdb.org/t/p/w300${movie.poster_path}"
+          alt="${movie.title}"
+        />
+        <div class="info">
+          <h3>${movie.title}</h3>
+        </div>
+      </li>
+    `
+    )
+    .join("");
+}
+
+$(function () {
+  loadupComingSection();
+});

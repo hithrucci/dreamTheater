@@ -26,8 +26,8 @@
           <ul class="gnb">
             <li><a href="#">홈</a><span></span></li>
             <li onclick="movie('now_playing')">현재상영작<span></span></li>
-            <li onclick="movie('upcoming')">상영예정작<span></span></li>
             <li onclick="movie('top_rated')">추천영화<span></span></li>
+            <li onclick="movie('upcoming')">상영예정작<span></span></li>
           </ul>
         </nav>
         <div id="search">
@@ -63,9 +63,32 @@
           </div>
         </div>
       </section>
-      <h2></h2>
-      <section id="movieBoard"></section>
-      <button id="more">더보기</button>
+      <section id="now_playing">
+        <div class="inner">
+          <h2>현재 상영작</h2>
+          <ul class="nowList"></ul>
+          <div class="chev">
+            <img src="./images/chev_left.png" />
+            <img src="./images/chev_right.png" />
+          </div>
+        </div>
+      </section>
+      <section id="top_rated">
+        <div class="inner">
+          <h2>추천 영화</h2>
+          <div class="topList"></div>
+        </div>
+      </section>
+      <section id="up_coming">
+        <div class="inner">
+          <h2>상영예정작</h2>
+          <ul class="upList"></ul>
+          <div class="chev">
+            <img src="./images/chev_left.png" />
+            <img src="./images/chev_right.png" />
+          </div>
+        </div>
+      </section>
     </main>
     <script src="./script/custom.js"></script>
   </body>
